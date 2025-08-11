@@ -23,7 +23,7 @@ The repository includes the Django project that implements a STAC API.
    git clone https://github.com/samweli/djangocon_africa_2025.git
    cd djangocon_africa_2025/
    ```
-2. **Start Django Project notebook**
+2. **Start Django Project**
    ```bash
       mkvirtualenv stac_api
       pip install -r requirements.txt
