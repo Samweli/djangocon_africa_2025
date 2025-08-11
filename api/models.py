@@ -5,7 +5,7 @@ class STACCollection(models.Model):
     collection_id = models.CharField(max_length=100, unique=True)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    extent = models.JSONField()  # Holds bbox and temporal extent
+    extent = models.JSONField()
 
     def __str__(self):
         return self.title
@@ -28,8 +28,8 @@ class STACAsset(models.Model):
     item = models.ForeignKey(STACItem, related_name='assets', on_delete=models.CASCADE)
     href = models.URLField()
     title = models.CharField(max_length=255)
-    type = models.CharField(max_length=100)  # MIME type like "image/tiff; application=geotiff"
-    roles = models.JSONField(blank=True, null=True)  # e.g., ["data"], ["thumbnail"]
+    type = models.CharField(max_length=100)
+    roles = models.JSONField(blank=True, null=True)
     asset_file = models.FileField(upload_to='assets/')
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
 
