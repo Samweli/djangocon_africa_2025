@@ -21,10 +21,15 @@ The repository includes the Django project that implements a STAC API.
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/samweli/djangocon_africa_2025.git
-   cd djangocon_africa_2025/django_stac/stac_api
+   cd djangocon_africa_2025/
    ```
 2. **Start Django Project notebook**
    ```bash
+      mkvirtualenv stac_api
+      pip install -r requirements.txt
+   ```
+3. **Run the Django project**:
+    ```bash
      ./manage.py runserver
 3. Once the project is running, you'll see a URL in the console output. It will look something like:
     ```bash 
