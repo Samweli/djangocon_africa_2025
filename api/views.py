@@ -20,10 +20,11 @@ from django.conf import settings
 from django.urls import reverse
 
 from rest_framework.response import Response
-from rest_framework.decorators import action, api_view
+from rest_framework.decorators import action, api_view, renderer_classes
 
 
 @api_view(['GET'])
+@renderer_classes([JSONRenderer])
 def landing_page(request):
     base_url = request.build_absolute_uri('/stac/')
 
