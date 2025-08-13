@@ -6,7 +6,7 @@ from django.utils.dateparse import parse_datetime
 from api.models import STACItem, STACAsset, STACCollection
 
 # Path to your file
-json_file_path = 'api/management/landsat_items.geojson'
+json_file_path = './scripts/landsat_items.geojson'
 
 # Set collection_id (must exist or will be created)
 collection_id = 'landsat-8'

@@ -31,27 +31,21 @@ Install and start PostgreSQL by running:
 ```
 
 
-After installing PostgreSQL, you'll need to initialize the database.
-
-1.  Log in as the admin user:
+Create a database and user:
 
     ```bash
     sudo su -l postgres
     ```
 
-2.  Create the project database:
-
     ```bash
     createdb stac
     ```
-
-3.  Connect to the database shell:
 
     ```bash
     psql stac
     ```
 
-4.  Grant privileges and enable the PostGIS extension:
+Grant privileges to the user
 
     ```sql
     CREATE USER stac WITH PASSWORD 'stac';
@@ -60,12 +54,17 @@ After installing PostgreSQL, you'll need to initialize the database.
     exit;
     ```
 
+
 3. **Create virtual environment**
 
 ```bash
   mkvirtualenv stac_api
 ```
 4. **Update migrations**
+
+Copy the `.env.example` file to `.env` and 
+edit the file and update the database credentials.
+
 
    ```bash
       pip install -r requirements.txt
@@ -79,18 +78,34 @@ After installing PostgreSQL, you'll need to initialize the database.
    Use the scripts/asset_fetch.py script to create sample test data.
 
    ```bash
-   pip install -r scripts/requirements.txt
+      pip install -r scripts/requirements.txt
    ```
 
    Then run the script to create test data
 
    ```bash  
-    python scripts/asset_fetch.py
+      python scripts/asset_fetch.py
     ```
 
-    After the scripts finishes. A download directory and a GeoJson file will be created in the scripts folder.
-    Use the GeoJson file content to populate the database using .
+    After the scripts finishes a `downloads` directory and a geojson file will be created in the scripts folder.
+    Use the geojson file content to populate the database using the following command.
 
+    ```bash
+      ./manage.py shell < import_landsat.py
+    ```
+
+    Following output should be displayed in the console if the data was imported successfully.
+
+    ```bash
+    Imported item: LC08_L2SP_047027_20200729_02_T1
+      → Asset added for LC08_L2SP_047027_20200729_02_T1
+    Imported item: LC08_L2SP_046027_20200722_02_T1
+      → Asset added for LC08_L2SP_046027_20200722_02_T1
+    Imported item: LC08_L2SP_047027_20200713_02_T1
+      → Asset added for LC08_L2SP_047027_20200713_02_T1
+    Imported item: LC08_L2SP_046027_20200706_02_T1
+      → Asset added for LC08_L2SP_046027_20200706_02_T1
+    ```
 
 6. **Start and run the Django Project**
    
@@ -101,7 +116,7 @@ After installing PostgreSQL, you'll need to initialize the database.
     ```bash 
       http://127.0.0.1:8000
     ```
-8. Open this URL in your web browser. You'll be taken to the STAC API implementation.
+8. Open this URL in your web browser and head over `http://127.0.0.1:8000/stac`, You'll be taken to the STAC API Catalog root page..
 
 
 ## Resources 
