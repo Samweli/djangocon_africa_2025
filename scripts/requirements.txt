@@ -1,0 +1,5 @@
+pystac_client
+geopandas
+planetary_computer
+requests
+shapely
