@@ -35,13 +35,9 @@ Create a database and user:
 
     ```bash
     sudo su -l postgres
-    ```
-
-    ```bash
+  
     createdb stac
-    ```
-
-    ```bash
+    
     psql stac
     ```
 
